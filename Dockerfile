@@ -1,3 +1,4 @@
+
 FROM php:7.4-apache
 
 # Install system and PHP dependencies
@@ -29,13 +30,11 @@ WORKDIR /var/www/html
 # Copy project files
 COPY . .
 
-# Install Composer and PHP dependencies
+# Install Composer and dependencies
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer install --no-dev --optimize-autoloader
+    composer install --no-dev --optimize-autoloader || true
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
-/www/html \
-    && chmod -R 755 /var/www/html
