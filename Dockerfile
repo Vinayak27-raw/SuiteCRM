@@ -13,6 +13,11 @@ WORKDIR /var/www/html
 
 # Copy files
 COPY . /var/www/html/
+RUN curl -sS https://getcomposer.org/installer | php && \
+    php composer.phar install --no-dev
+RUN curl -sS https://getcomposer.org/installer | php && \
+    php composer.phar install --no-dev
+
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
